@@ -36,4 +36,10 @@ public class boardcell {
 		return type;
 	}
 	
+	// print contents of cell
+	public void printCell() {
+		System.out.println("Value: " + val);
+		System.out.println("Empty: " + empty);
+		System.out.println("Type" + type);
+	}
 }

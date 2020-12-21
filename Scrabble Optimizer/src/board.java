@@ -8,7 +8,11 @@ public class board {
 	public board() {
 		currBoard = new boardcell[BOARD_LENGTH][BOARD_LENGTH];
 		generateBoard();
-		
+	}
+	
+	// return specific cell
+	public boardcell getCell(int r, int c) {
+		return currBoard[r][c];
 	}
 	
 	// prints out type of each cell on board
