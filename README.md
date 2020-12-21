@@ -7,7 +7,9 @@ The RUNNER
 * number of players, number of tiles left
 
 The BOARD
-* 15 by 15 two dimensional character array
+* ~~15 by 15 two dimensional character array~~
+* 15 by 15 two dimensional boardcell array
+* boardcell class contains value, type, and empty
 
 The DICTIONARY
 * ~~list data structure to store all valid words~~
