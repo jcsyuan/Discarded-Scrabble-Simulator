@@ -1,9 +1,9 @@
 
 public class boardcell {
 	
-	char val = '0';
-	boolean empty;
-	celltype type;
+	private char val = '0';
+	private boolean empty;
+	private celltype type;
 	
 	// constructor method
 	public boardcell(boolean empty, celltype type) {

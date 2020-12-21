@@ -1,8 +1,8 @@
 
 public class board {
 	
-	final int BOARD_LENGTH = 15;
-	boardcell[][] currBoard;
+	final static int BOARD_LENGTH = 15;
+	private boardcell[][] currBoard;
 	
 	// constructor method
 	public board() {
