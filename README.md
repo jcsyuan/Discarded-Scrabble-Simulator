@@ -10,7 +10,7 @@ The BOARD
 * 15 by 15 two dimensional character array
 
 The DICTIONARY
-* ~~list data structure to store all valid words
+* ~~list data structure to store all valid words~~
 * set data structure to store all valid words
 * map data structure to store letter-point values
 
