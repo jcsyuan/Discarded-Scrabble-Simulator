@@ -1,7 +1,7 @@
 
 public class boardcell {
 	
-	private char val = '0';
+	private char val = ' ';
 	private boolean empty;
 	private celltype type;
 	
