@@ -7,12 +7,14 @@ The RUNNER
 * number of players, number of tiles left
 
 The BOARD
-* 15 by 15 two dimensional character array
+* ~~15 by 15 two dimensional character array~~
+* 15 by 15 two dimensional boardcell array
+* boardcell class contains value, type, and empty
 
 The DICTIONARY
-* list data structure to store all valid words, val
-* tree data structure to store all valid words
-* graph data structure to store all valid words and their base values
+* ~~list data structure to store all valid words~~
+* set data structure to store all valid words
+* map data structure to store letter-point values
 
 The OPTIMIZER
 * recursive function to calculate optimal move
