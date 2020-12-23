@@ -1,26 +1,21 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner; 
 
 public class dictionary {
 	
-	final static int LOWER_TO_UPPER = 32;
 	private HashMap<Character, Integer> letterToPoint = new HashMap<Character, Integer>();
-	private ArrayList<String> words = new ArrayList<>();
+	private HashSet<String> words = new HashSet<>();
 	
 	// constructor method
 	public dictionary() throws FileNotFoundException {
 	    scanFile();
 	    assignLetterPoints();
-	}
-	
-	// return specific word based on index
-	public String getWord(int index) {
-		if(0 <= index && index < words.size())
-			return words.get(index);
-		return "";
 	}
 	
 	// return corresponding points of given word, -1 if word doesn't exist
@@ -35,21 +30,30 @@ public class dictionary {
 		return -1;
 	}
 	
+	// return all possible words given a seven letter combination (0 is blank tile)
+	public ArrayList<String> getWords(ArrayList<Character> letters) {
+		ArrayList<String> possibleWords = new ArrayList<>();
+		getWordsHelper(possibleWords, letters, "");
+		return possibleWords;
+	}
+	
 	// prints out all words in dictionary
 	public void printWords() {
-		for(int word = 0; word < words.size(); word++) {
+		Iterator<String> it = words.iterator(); 
+		while(it.hasNext()) {
+			String word = it.next();
 			int points = 0;
-			for(int i = 0; i < words.get(word).length(); i++) {
-				points += letterToPoint.get((char)(words.get(word).charAt(i) - LOWER_TO_UPPER));
+			for(int i = 0; i < word.length(); i++) {
+				points += letterToPoint.get((char)(word.charAt(i)));
 			}
-			System.out.print(words.get(word));
+			System.out.print(word);
 			System.out.println(" " + points);
 		}
 	}
 	
 	// helper method to scan words in text file
 	private void scanFile() throws FileNotFoundException {
-		File file = new File("small_dictionary.txt"); 
+		File file = new File("small_dictionary_upper.txt"); 
 	    Scanner sc = new Scanner(file);
 	    while (sc.hasNextLine()) {
 	    	words.add(sc.nextLine());
@@ -77,6 +81,39 @@ public class dictionary {
 				letterToPoint.put(curr, 10);
 		}
 		letterToPoint.put('0', 0);
+	}
+	
+	// recursive helper method to get all possible words
+	private void getWordsHelper(ArrayList<String> possibleWords, ArrayList<Character> letters, String curr) {
+		if(letters.size() != 0) {
+			for(int i = 0; i < letters.size(); i++) {
+				if(letters.get(i) == '0') {
+					for(char tempBlank = 'A'; tempBlank <= 'Z'; tempBlank++) {
+						String tempCurr = curr + tempBlank;
+						if(words.contains(tempCurr)) {
+							possibleWords.add(tempCurr);
+						}
+						ArrayList<Character> tempLetters = new ArrayList<Character>();
+						for(int c = 0; c < letters.size(); c++) {
+							if(c != i)
+								tempLetters.add(letters.get(c));
+						}
+						getWordsHelper(possibleWords, tempLetters, tempCurr);
+					}
+				} else {
+					String tempCurr = curr + letters.get(i);
+					if(words.contains(tempCurr)) {
+						possibleWords.add(tempCurr);
+					}
+					ArrayList<Character> tempLetters = new ArrayList<Character>();
+					for(int c = 0; c < letters.size(); c++) {
+						if(c != i)
+							tempLetters.add(letters.get(c));
+					}
+					getWordsHelper(possibleWords, tempLetters, tempCurr);
+				}
+			}
+		}
 	}
 	
 }
