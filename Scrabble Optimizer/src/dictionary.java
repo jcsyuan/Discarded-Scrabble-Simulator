@@ -30,13 +30,6 @@ public class dictionary {
 		return -1;
 	}
 	
-	// return all possible words given a seven letter combination (0 is blank tile)
-	public ArrayList<String> getWords(ArrayList<Character> letters) {
-		ArrayList<String> possibleWords = new ArrayList<>();
-		getWordsHelper(possibleWords, letters, "");
-		return possibleWords;
-	}
-	
 	// prints out all words in dictionary
 	public void printWords() {
 		Iterator<String> it = words.iterator(); 
@@ -83,6 +76,15 @@ public class dictionary {
 		letterToPoint.put('0', 0);
 	}
 	
+	/*
+	
+	// return all possible words given a seven letter combination (0 is blank tile)
+		public ArrayList<String> getWords(ArrayList<Character> letters) {
+			ArrayList<String> possibleWords = new ArrayList<>();
+			getWordsHelper(possibleWords, letters, "");
+			return possibleWords;
+		}
+	
 	// recursive helper method to get all possible words
 	private void getWordsHelper(ArrayList<String> possibleWords, ArrayList<Character> letters, String curr) {
 		if(letters.size() != 0) {
@@ -115,5 +117,7 @@ public class dictionary {
 			}
 		}
 	}
+	
+	*/
 	
 }

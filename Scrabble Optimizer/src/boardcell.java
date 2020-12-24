@@ -2,6 +2,7 @@
 public class boardcell {
 	
 	private char val = ' ';
+	private int point = 0;
 	private boolean empty;
 	private celltype type;
 	
@@ -12,9 +13,10 @@ public class boardcell {
 	}
 	
 	// set cell's value
-	public boolean setVal(char val) {
+	public boolean setVal(char val, int point) {
 		if(empty) {
 			this.val = val;
+			this.point = point;
 			this.empty = false;
 			return true;
 		}
@@ -26,8 +28,13 @@ public class boardcell {
 		return val;
 	}
 	
+	// return point value of cell
+	public int getPoint() {
+		return point;
+	}
+	
 	// return whether cell is empty
-	public boolean getEmpty() {
+	public boolean isEmpty() {
 		return empty;
 	}
 	
