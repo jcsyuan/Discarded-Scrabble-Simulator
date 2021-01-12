@@ -1,5 +1,7 @@
 # Scrabble-Optimizer
 
+NOTICE: please see 'Scrabble-Simulator', this is an old version of the projet
+
 A Scrabble simulator that generates the optimal move given a distinct Scrabble board.
 
 The RUNNER
